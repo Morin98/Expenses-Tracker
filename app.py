@@ -132,6 +132,8 @@ def df_cleaning(df):
 
     return df
 
+# Test commit
+
 def summarize_expenses(expenses, budget):
     amount_by_category = {}
     for expense in expenses:
