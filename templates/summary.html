@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Expense Summary</h1>
+
+    <h2>Expenses By Category:</h2>
+    <ul>
+        {% for category, amount in summary_data['amount_by_category'].items() %}
+            <li>{{ category }}: ${{ amount }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Total Spent: ${{ summary_data['total_spent'] }}</h2>
+    <h2>Budget: ${{ summary_data['budget'] }}</h2>
+    <h2>Budget Remaining: ${{ summary_data['remaining_budget'] }}</h2>
+    <h2>Remaining Days in the Current Month: {{ summary_data['remaining_days'] }}</h2>
+    <h2>Budget Per Day: ${{ summary_data['daily_budget'] }}</h2>
+
+    <br>
+    <a href="{{ url_for('index') }}">Go Back to Add Expense</a>
+{% endblock %}
+

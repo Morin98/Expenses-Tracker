@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <h1>Bank Transactions</h1>
+    {% if uploaded_transactions %}
+        <h3>Uploaded Transactions</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Naam</th>
+                    <th>Bedrag (EUR)</th>
+                    <th>Saldo na mutatie</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in uploaded_transactions %}
+                    <tr>
+                        <td>{{ transaction['Datum'] }}</td>
+                        <td>{{ transaction['Naam'] }}</td>
+                        <td>{{ transaction['Bedrag (EUR)'] }}</td>
+                        <td>{{ transaction['Saldo na mutatie'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No transactions uploaded yet.</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}

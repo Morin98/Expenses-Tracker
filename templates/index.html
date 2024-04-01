@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Expense Tracker</h1>
+    <form action="{{ url_for('add_expense') }}" method="post">
+        <label for="expense_name">Expense Name:</label>
+        <input type="text" id="expense_name" name="expense_name" required>
+        <br>
+        <label for="expense_amount">Expense Amount:</label>
+        <input type="number" id="expense_amount" name="expense_amount" required>
+        <br>
+        <label for="expense_category">Expense Category:</label>
+        <select id="expense_category" name="expense_category" required>
+            <option value="Boodschappen">Boodschappen</option>
+            <option value="Uitgaan">Uitgaan</option>
+            <option value="Kleding">Kleding</option>
+            <option value="Vakantie">Vakantie</option>
+        </select>
+        <br>
+        <label for="expense_date">Expense Date:</label>
+        <input type="date" id="expense_date" name="expense_date" required>
+        <br>
+        <input type="submit" value="Add Expense">
+        <br>
+    </form>
+    <form action="{{ url_for('bank_transactions') }}" method=post enctype=multipart/form-data>
+        <label for="expense_file">Upload CSV File:</label>
+        <input type=file name=file id="expense_file">
+        <input type=submit value=Upload>
+    </form>
+    <br>
+    <a href="{{ url_for('summary') }}">View Summary</a>
+    <a href="{{ url_for('expenses') }}">View Expenses</a>
+{% endblock %}
